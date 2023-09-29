@@ -5,6 +5,11 @@ pub fn build(b: *std.Build) void {
 
     const optimize = b.standardOptimizeOption(.{});
 
+    _ = b.addModule("hex", .{
+        .source_file = .{ .path = "src/main.zig" },
+        .dependencies = &[_]std.Build.ModuleDependency{},
+    });
+
     const lib = b.addStaticLibrary(.{
         .name = "hex",
         .root_source_file = .{ .path = "src/main.zig" },
